@@ -1,0 +1,25 @@
+need to call interface struct methods which is not published
+
+for example 
+  type sglk struct {
+         age int 
+         grade int
+  }
+
+  func (s *sglk) Raise() {
+   s.grade++
+  }
+
+  func (s *sglk) Grow() {
+     s.age++
+  }
+
+  type Person interface {
+    Raise()
+  }
+
+when u want to call grow, here is the solution 
+  Person.(interface {
+   Grow()
+  })
+  
